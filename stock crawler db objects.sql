@@ -85,7 +85,7 @@ GO
 -- =============================================
 -- Author:		fjtello
 -- Create date: 2019.09.06
--- Description:	Inserción en la tabla de valores
+-- Description:	InserciÃ³n en la tabla de valores
 -- =============================================
 CREATE PROCEDURE [dbo].[proc_StockValues_Insert]
 	@par_ticker VARCHAR(20), 
