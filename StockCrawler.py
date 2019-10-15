@@ -25,7 +25,8 @@ from requests.auth import HTTPBasicAuth
 cnx = "Driver={ODBC Driver 13 for SQL Server};Server=(localdb)\MSSQLLocalDB;Database=STOCK;Trusted_Connection=yes;"
 cnx = "Driver={ODBC Driver 17 for SQL Server};Server=(localdb)\MSSQLLocalDB;Database=STOCK;Trusted_Connection=yes;"
 
-xml_aemet_mostoles = r"http://www.aemet.es/xml/municipios/localidad_28161.xml"
+# Quito esto, que a JJe no le gusta (2019.10.15)
+# xml_aemet_mostoles = r"http://www.aemet.es/xml/municipios/localidad_28161.xml"
 
 chrome_path = r"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe %s"
 chrome_path = r"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
