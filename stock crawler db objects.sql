@@ -59,7 +59,6 @@ GO
 
 -- =============================================
 -- Author:		fjtello
--- Create date: 2019.09.06
 -- Description:	Lectura de la tabla de archivos
 -- =============================================
 
@@ -84,7 +83,6 @@ GO
 
 -- =============================================
 -- Author:		fjtello
--- Create date: 2019.09.06
 -- Description:	Inserción en la tabla de valores
 -- =============================================
 CREATE PROCEDURE [dbo].[proc_StockValues_Insert]
