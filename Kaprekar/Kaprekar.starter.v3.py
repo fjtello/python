@@ -22,9 +22,14 @@ def evolucion(n):
     if serie_actual.__contains__(numero_dif):
         if not numeros_de_kaprekar.__contains__(numero_dif):
             numeros_de_kaprekar.append(numero_dif)
+            numeros_de_kaprekar.sort(reverse=False)
         return 0
 
     serie_actual.append(numero_dif)
+
+    # ¿Está 'numero' ya incluido en la lista?
+    #if procesados.__contains__(numero_dif):
+    #   return 0
 
     procesados.append(numero_dif)
     procesados.sort()
@@ -55,6 +60,8 @@ for numero in range (numero_inicial, numero_final + 1):
         tablero.append(elemento)
 
         fin_de_ciclo = True
-        #print(serie_actual.__len__(), " --> ", serie_actual)
+        print(serie_actual.__len__(), " --> ", serie_actual)
 
-print(" Números de Kaprekar para {} cifras ==> ".format(str(cifras)), numeros_de_kaprekar.sort(reverse=False))
+# print(" ==> ", procesados.__len__(), procesados)
+# print(" ==> ", tablero)
+print(" Números de Kaprekar para {} cifras ==> ".format(str(cifras)), numeros_de_kaprekar)
