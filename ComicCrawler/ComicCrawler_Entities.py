@@ -1,3 +1,16 @@
+class Page:
+    URL = ""
+    Title = ""
+
+    def __init__(self, url, title):
+        self.URL = url
+        self.Title = title
+
+    def echo(self):
+        print("echo comic URL: ", self.URL)
+        print("echo comic Title: ", self.Title)
+
+
 
 class comic:
 
@@ -26,6 +39,30 @@ class comic:
 
     def get_format_filename(self, position):
         return ("000" + str(position))[-3:] + "_" +\
+            self.Title.replace(":", "").\
+            replace("  ", " ").\
+            replace("  ", " ").\
+            replace("-", "").\
+            replace("  ", " ").\
+            replace("!", ""). \
+            replace(" ", "_").\
+            replace("-", "_").\
+            replace("á", "a").\
+            replace("é", "e").\
+            replace("í", "i").\
+            replace("ó", "o").\
+            replace("ú", "u").\
+            replace("Á", "A").\
+            replace("É", "E").\
+            replace("Í", "I").\
+            replace("Ó", "O").\
+            replace("Ú", "U").\
+            replace("ñ", "n").\
+            replace("Ñ", "N").\
+            replace("%2B", "_")
+
+    def get_format_filename(self):
+        return "" +\
             self.Title.replace(":", "").\
             replace("  ", " ").\
             replace("  ", " ").\

@@ -1,31 +1,40 @@
 import ComicCrawler_Data as comic_data
 import ComicCrawler_Functions as comic_functions
 
-str_path_destiny = "C:/Temp/"
-str_path_destiny_cbr = "C:/Temp/cbr/"
-str_path_destiny_html = "C:/temp/html/"
+str_tag_elements = "tag unique"
+str_path_destiny = "C:/Comic/"
+str_path_destiny_cbx = "C:/Comic/cbx/"
+str_path_destiny_html = "C:/Comic/html/"
 
-def start_process():
+
+def start_process_elements():
     comic_list = comic_data.load_comic_list()
+    text_excepts = comic_data.texts_to_replace()
 
     i = 1
     for element in comic_list:
-        title = element.get_title(i)
-        title_format = element.get_format_filename(i)
+        if element.Collection != "":
+            title = element.get_title(i)
+            title_formatted = element.get_format_filename()
+            path_destiny_files = str_path_destiny + "" + title_formatted + ".html"
+            path_destiny_images = str_path_destiny + title + "/"
+            
+            print("PROCESSING...   [", i, "]   ==>   ", title)
 
-        path_destiny_files = str_path_destiny + "" + title_format + ".html"
-        comic_functions.save_url_content_into_html_file(str(element.URL), path_destiny_files)
+            # get inner block pf images
+            comic_functions.save_url_content_into_html_file(str(element.URL), path_destiny_files)
 
-        path_destiny_images = str_path_destiny + title + "/"
-        url_images_list = comic_functions.get_list_images(path_destiny_files, path_destiny_images)
-        comic_functions.move_file(path_destiny_files, str_path_destiny_html + title_format + ".html")
+            # get list of the images to download
+            url_images_list = comic_functions.get_list_images(path_destiny_files, path_destiny_images)
+            
+            comic_functions.move_file(path_destiny_files, str_path_destiny_html + title_formatted + ".html")
 
-        local_images_list = comic_functions.download_images(path_destiny_images, url_images_list, title_format)
-        comic_functions.compress_dir_content(path_destiny_images, title_format, local_images_list, str_path_destiny_cbr)
-
-        i = i + 1
-        if i == 500:
-            break
-
-
-start_process()
+            # download the images
+            local_images_list = comic_functions.download_images(path_destiny_images, url_images_list, text_excepts)
+            
+            # compress the set of images for a comic book and 
+            comic_functions.compress_dir_content(path_destiny_images, title_formatted, local_images_list,
+                                                 str_path_destiny_cbx)
+    
+    
+start_process_elements()
