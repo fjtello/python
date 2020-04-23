@@ -1,4 +1,5 @@
 from ComicCrawler_Entities import comic
+from ComicCrawler_Entities import Page
 
 def load_comic_list():
     comic_list = [ 
@@ -12,11 +13,16 @@ comic("collection", "https://www.web.com/page2.html", "Title2"), \
 def texts_to_replace():
     txts = [ \
         "escanear", \
-        "Sin%2Bt%25C3%25ADtulo-Escaneado-", \
         "Escanear0", \
-        "20151102110937726_", \
         "PaginaComic", \
-        "%2B", ""
+        "%2B", "", \
+        "Scan", ""
     ]
 
     return txts
+ 
+ 
+def load_item_tag():
+    return "post-body entry-content"
+
+
